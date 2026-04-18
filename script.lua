@@ -1621,9 +1621,9 @@ end -- BLOCK 2
 local function createOverheadTag()
     local char=player.Character or player.CharacterAdded:Wait()
     local head=char:WaitForChild("Head")
-    local old=head:FindFirstChild("KakashiTag") if old then old:Destroy() end
+    local old=head:FindFirstChild("LightTag") if old then old:Destroy() end
     local billboard=Instance.new("BillboardGui")
-    billboard.Name="KakashiTag"
+    billboard.Name="LightTag"
     billboard.Size=UDim2.new(0,160,0,32)
     billboard.StudsOffset=Vector3.new(0,2.8,0)
     billboard.AlwaysOnTop=false billboard.ResetOnSpawn=false
@@ -1647,7 +1647,7 @@ local function createOverheadTag()
     local pIcon=Instance.new("TextLabel",bg)
     pIcon.Size=UDim2.new(0,24,1,-4) pIcon.Position=UDim2.new(0,4,0,2)
     pIcon.BackgroundColor3=Color3.fromRGB(60,20,20) pIcon.BackgroundTransparency=0.1
-    pIcon.Text="K" pIcon.Font=Enum.Font.GothamBlack pIcon.TextSize=15
+    pIcon.Text="L" pIcon.Font=Enum.Font.GothamBlack pIcon.TextSize=15
     pIcon.TextColor3=CW pIcon.TextXAlignment=Enum.TextXAlignment.Center pIcon.BorderSizePixel=0
     Instance.new("UICorner",pIcon).CornerRadius=UDim.new(0,5)
     local div=Instance.new("Frame",bg)
@@ -1655,7 +1655,7 @@ local function createOverheadTag()
     div.BackgroundColor3=CGREEN div.BackgroundTransparency=0.3 div.BorderSizePixel=0
     local label=Instance.new("TextLabel",bg)
     label.Size=UDim2.new(1,-38,1,0) label.Position=UDim2.new(0,36,0,0)
-    label.BackgroundTransparency=1 label.Text="KAKASHI HUB"
+    label.BackgroundTransparency=1 label.Text="LIGHT HUB"
     label.Font=Enum.Font.GothamBlack label.TextSize=10
     label.TextColor3=CW label.TextXAlignment=Enum.TextXAlignment.Center
     local grad=Instance.new("UIGradient",label)
@@ -1699,4 +1699,4 @@ task.spawn(function()
     while true do task.wait(5) saveConfig() end
 end)
 
-print("🔴 KAKASHI HUB LOADED")
+print("LIGHT HUB LOADED")
