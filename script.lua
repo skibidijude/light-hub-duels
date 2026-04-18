@@ -121,13 +121,13 @@ local function saveConfig()
         for k,v in pairs(Keybinds) do if v then data.Keybinds[k]=v.Name end end
         for k,v in pairs(toggleStates) do data.Toggles[k]=v end
         if MobileButtonsGui then data.Mobile=MobileButtonsGui.Enabled end
-        writefile("KakashiHub_Config.json", HttpService:JSONEncode(data))
+        writefile("LightHub_Config.json", HttpService:JSONEncode(data))
     end)
 end
 local function loadConfig()
     pcall(function()
-        if isfile("KakashiHub_Config.json") then
-            local data = HttpService:JSONDecode(readfile("KakashiHub_Config.json"))
+        if isfile("LightHub_Config.json") then
+            local data = HttpService:JSONDecode(readfile("Light_Config.json"))
             if data.Config   then for k,v in pairs(data.Config)   do Config[k]=v end end
             if data.Keybinds then for k,v in pairs(data.Keybinds) do Keybinds[k]=Enum.KeyCode[v] end end
             if data.Toggles  then for k,v in pairs(data.Toggles)  do _savedToggles[k]=v end end
@@ -150,7 +150,7 @@ local function makeSpeedBB()
     local head = c:FindFirstChild("Head") if not head then return end
     if speedBB then pcall(function() speedBB:Destroy() end) end
     speedBB = Instance.new("BillboardGui")
-    speedBB.Name = "KakashiSpeedBB"
+    speedBB.Name = "LightSpeedBB"
     speedBB.Adornee = head
     speedBB.Size = UDim2.new(0, 130, 0, 30)
     speedBB.StudsOffset = Vector3.new(0, 3.2, 0)
@@ -291,7 +291,7 @@ local function stopAntiRagdoll()  disableAntiRagdoll() end
 ----------------------------------------------------------------
 -- PLAYER ESP
 ----------------------------------------------------------------
-local ESP_COLOR     = CGREEN
+local ESP_COLOR     = CWHITE
 local espHighlights = {}
 local espBillboards = {}
 local espConns      = {}
@@ -307,7 +307,7 @@ local BODY_PARTS = {
 
 local function _espCreateHighlight(char)
     local h = Instance.new("Highlight")
-    h.Name                = "KakashiHub_HL"
+    h.Name                = "LightHub_HL"
     h.Adornee             = char
     h.FillColor           = ESP_COLOR
     h.FillTransparency    = 0.4
@@ -321,7 +321,7 @@ end
 local function _espCreateBillboard(char, p)
     local hrp = char:WaitForChild("HumanoidRootPart", 5) if not hrp then return nil end
     local bb = Instance.new("BillboardGui")
-    bb.Name                  = "KakashiHub_BB"
+    bb.Name                  = "LightHub_BB"
     bb.Adornee               = hrp
     bb.AlwaysOnTop           = true
     bb.Size                  = UDim2.new(0, 110, 0, 22)
@@ -900,7 +900,7 @@ end
 local function initAutoStealGUI()
     if autoStealGui then pcall(function() autoStealGui:Destroy() end) autoStealGui=nil end
     autoStealGui=Instance.new("ScreenGui")
-    autoStealGui.Name="KakashiHubAutoSteal"
+    autoStealGui.Name="LightHubAutoSteal"
     autoStealGui.ResetOnSpawn=false
     autoStealGui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
     autoStealGui.Parent=player:WaitForChild("PlayerGui")
@@ -981,12 +981,12 @@ local _reopenBtn
 do -- BLOCK 1
 
 for _,g in ipairs(player.PlayerGui:GetChildren()) do
-    if g.Name=="KakashiHubGUI" then g:Destroy() end
+    if g.Name=="LightHubGUI" then g:Destroy() end
 end
 
 _ScreenGui=Instance.new("ScreenGui")
 local ScreenGui=_ScreenGui
-ScreenGui.Name="KakashiHubGUI"
+ScreenGui.Name="LightHubGUI"
 ScreenGui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn=false
 
@@ -1283,7 +1283,7 @@ mssS=Instance.new("UIStroke",MobileSupportBtn) mssS.Color=CGRDIM mssS.Thickness=
 ----------------------------------------------------------------
 _reopenBtn=Instance.new("Frame",ScreenGui)
 local reopenBtn=_reopenBtn
-reopenBtn.Name="KakashiHubReopenBtn"
+reopenBtn.Name="LightHubReopenBtn"
 reopenBtn.Size=UDim2.new(0,46,0,46)
 reopenBtn.Position=UDim2.new(0,10,0,56)
 reopenBtn.BackgroundColor3=Color3.fromRGB(40,40,40)
@@ -1306,7 +1306,7 @@ task.spawn(function()
 end)
 local reopenP=Instance.new("TextLabel",reopenBtn)
 reopenP.Size=UDim2.new(1,0,1,0) reopenP.BackgroundTransparency=1
-reopenP.Text="K" reopenP.Font=Enum.Font.GothamBlack
+reopenP.Text="L" reopenP.Font=Enum.Font.GothamBlack
 reopenP.TextSize=26 reopenP.TextColor3=CW
 reopenP.TextXAlignment=Enum.TextXAlignment.Center reopenP.ZIndex=11
 local reopenClick=Instance.new("TextButton",reopenBtn)
@@ -1354,7 +1354,7 @@ end)
 -- MOBILE BUTTONS
 ----------------------------------------------------------------
 MobileButtonsGui=Instance.new("ScreenGui")
-MobileButtonsGui.Name="KakashiHubMobileButtons"
+MobileButtonsGui.Name="LightHubMobileButtons"
 MobileButtonsGui.ResetOnSpawn=false
 MobileButtonsGui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
 MobileButtonsGui.Enabled=false
