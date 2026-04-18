@@ -115,7 +115,7 @@ local StealData    = {}
 local VisualSetters = {}
 
 local isStealing     = false
-local stealStartTime = nil
+local stealStartTime = false
 
 local AutoLeftEnabled      = false
 local AutoRightEnabled     = false
