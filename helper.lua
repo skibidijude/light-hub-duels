@@ -591,5 +591,3 @@ antiDieLabel.Font = Enum.Font.Gotham
 antiDieLabel.TextSize = 9
 antiDieLabel.TextColor3 = Color3.fromRGB(70, 70, 70)
 antiDieLabel.ZIndex = 2
-
-print ("Divine Admin Abuse Helper Loaded!")
